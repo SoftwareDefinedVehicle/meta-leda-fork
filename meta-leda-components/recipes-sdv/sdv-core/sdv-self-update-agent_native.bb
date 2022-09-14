@@ -1,3 +1,16 @@
+# /********************************************************************************
+# * Copyright (c) 2022 Contributors to the Eclipse Foundation
+# *
+# * See the NOTICE file(s) distributed with this work for additional
+# * information regarding copyright ownership.
+# *
+# * This program and the accompanying materials are made available under the
+# * terms of the Apache License 2.0 which is available at
+# * https://www.apache.org/licenses/LICENSE-2.0
+# *
+# * SPDX-License-Identifier: Apache-2.0
+# ********************************************************************************/
+
 DESCRIPTION = "Native build for self-update-agent."
 DEPENDS = "git-native"
 LICENSE = "Apache-2.0"
@@ -40,10 +53,10 @@ do_install() {
     install -d ${D}/usr
     case ${TARGET_ARCH} in
         aarch64*)    
-            cp -r dist_amd64 ${D}/usr/sua
+            cp -r dist_arm64 ${D}/usr/sua
             ;;
         x86_64*)
-            cp -r dist_arm64 ${D}/usr/sua
+            cp -r dist_amd64 ${D}/usr/sua
             ;;
         *)
             bbfatal "Recipe has no target-arch-to-dapr-release-arch mapping for '${TARGET_ARCH}'."
