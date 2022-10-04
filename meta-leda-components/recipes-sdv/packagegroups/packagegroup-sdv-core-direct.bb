@@ -22,7 +22,7 @@ SDV_EXTERNAL_DEPENDS = "\
 RDEPENDS:${PN} = "\
     ca-certificates \
     kernel-modules \
-    kernel-image \
     rauc "
+#    kernel-image 
 
 RDEPENDS:${PN} += "${@bb.utils.contains("DISTRO_FEATURES", "sdv", "${SDV_EXTERNAL_DEPENDS}", "", d)}"
