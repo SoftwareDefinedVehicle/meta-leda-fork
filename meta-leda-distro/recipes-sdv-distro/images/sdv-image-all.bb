@@ -18,6 +18,11 @@ LICENSE = "EPL"
 RDEPENDS:${PN} = "sdv-image-full sdv-image-minimal sdv-image-rescue sdv-rauc-bundle"
 DEPENDS = "sdv-image-full sdv-image-minimal sdv-image-rescue sdv-rauc-bundle"
 
+# Debug tweaks
+IMAGE_FEATURES:append = " debug-tweaks"
+IMAGE_FEATURES:append = " allow-empty-password"
+IMAGE_FEATURES:append = " empty-root-password"
+
 inherit core-image
 
 # Ensure efi-boot.vfat is built
@@ -30,7 +35,7 @@ do_image_wic[depends] += "sdv-image-minimal:do_rootfs_wicenv"
 do_image_wic[depends] += "sdv-image-full:do_rootfs_wicenv"
 
 # For qemu, we produce disk images in qcow2 format (faster and smaller than raw or ext4 images)
-IMAGE_FSTYPES = " wic.qcow2"
+#IMAGE_FSTYPES = " wic.qcow2"
 
 # For scancode, we'll produce tar files of the rootfs
 IMAGE_FSTYPES += " tar.bz2"
@@ -38,7 +43,7 @@ IMAGE_FSTYPES += " tar.bz2"
 # Raspberry Pi needs a plain WIC file (not qcow2) to be flashed to SD-Card
 IMAGE_FSTYPES:raspberrypi4-64 += " tar.bz2 wic.bz2 wic.bmap"
 
-QB_DEFAULT_FSTYPE = "wic.qcow2"
+#QB_DEFAULT_FSTYPE = "wic.qcow2"
 
 # Fall back to ext4 for now, as wic for qemuarm does not yet contain u-boot
 QB_ROOTFS_OPT:qemuarm = "-drive id=disk0,file=@ROOTFS@,if=none,format=qcow2 -device virtio-blk-device,drive=disk0"
@@ -47,8 +52,9 @@ QB_FSINFO:qemuarm = "wic:no-kernel-in-fs"
 QB_ROOTFS_OPT:qemuarm64 = "-drive id=disk0,file=@ROOTFS@,if=none,format=qcow2 -device virtio-blk-device,drive=disk0"
 QB_FSINFO:qemuarm64 = "wic:no-kernel-in-fs"
 
+#QB_FSINFO = "wic:no-kernel-in-fs"
 # Must be in sync with:
 #  GRUB Config: meta-leda/recipes-bsp/grub/files/grub.cfg
 #  WIC Kickstarter File: build-sdv-arm-qemu/wic/qemuarm-grub.wks
-QB_KERNEL_ROOT = "/dev/vda4"
+QB_KERNEL_ROOT = "/dev/vda"
 QB_DRIVE_TYPE="/dev/vd"
