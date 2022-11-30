@@ -20,7 +20,7 @@ CONTAINER_SKIP_MISSING_ARCH ??= "0"
 SDV_DL_FILENAME ??= "${PN}-${PV}-${TARGET_ARCH}-${SDV_IMAGE_TAG}.tar"
 SDV_DL_FILE ??= "${DL_DIR}/${SDV_DL_FILENAME}"
 
-K3S_AGENT_PRELOAD_DIR ??= "/var/lib/rancher/k3s/agent/images"
+K3S_AGENT_PRELOAD_DIR ??= "/agent/images"
 
 FALSE = "0"
 TRUE = "1"

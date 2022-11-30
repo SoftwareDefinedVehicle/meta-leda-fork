@@ -24,10 +24,6 @@ IMAGE_INSTALL:append = " packagegroup-sdv-additions"
 IMAGE_INSTALL:append = " packagegroup-sdv-tools"
 IMAGE_INSTALL:append = " packagegroup-sdv-examples"
 
-# TODO: Temporarily disabled AirGap container installations
-# until projects have released containers
-# IMAGE_INSTALL:append = " packagegroup-sdv-airgap"
-
 IMAGE_LINGUAS = " "
 
 
