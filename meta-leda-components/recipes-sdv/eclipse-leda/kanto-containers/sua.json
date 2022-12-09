@@ -70,7 +70,7 @@
     "config": {
         "env": [
            "MQTT_CONN_BROKER=tcp://mosquitto:1883",
-           "LOG_LEVEL=DEBUG"
+           "LOG_LEVEL=INFO"
         ],
         "cmd": []
     },
