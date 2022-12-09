@@ -10,7 +10,18 @@
     "resolv_conf_path": "",
     "hosts_path": "",
     "hostname_path": "",
-    "mounts": [],
+    "mounts": [
+        {
+            "source": "/var/run/dbus/system_bus_socket",
+            "destination": "/var/run/dbus/system_bus_socket",
+            "propagation_mode": "rprivate"
+        },
+        {
+            "source": "/data_temp/selfupdates",
+            "destination": "/RaucUpdate",
+            "propagation_mode": "rprivate"
+        }
+    ],
     "hooks": [],
     "host_config": {
         "devices": [],
